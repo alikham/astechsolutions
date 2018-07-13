@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HPY-Web-Template-with-google-direction-map</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+  </head>
+
+  <body id='background_image'>
+    <div class="container custom_container">
+      <div class="site_logo">
+        <img src="images/logo.png" alt="Site Logo"/>
+        <span class="top-links"><a href="#">Set as homepage</a><a href="#">Add as Bookmark</a> <a href="#">Share</a> </span>
+      </div>
+      <!-- Navigation -->
+      <nav class="navbar  navbar-expand-lg navbar-dark bg-dark navbar-gradient">
+      <!-- <nav class="navbar  navbar-expand-lg navbar-gradient "> -->
+        <!-- <div class="container"> -->
+          <!-- <a class="navbar-brand" href="index.html">Start Bootstrap</a> -->
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-right" >
+
+              <li class="nav-item" >
+                <a class="nav-link" href="#"><strong>Home</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><strong>About Us</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><strong>HPY 2011</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><strong>Mentoring</strong> </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><strong>Database</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><strong>Gallery</strong></a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#"><strong>Contact Us</strong></a>
+              </li>
+             
+            </ul>
+          </div>
+        <!-- </div> -->
+      </nav>
+
+      <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          
+          <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style="background-image: url('images/carousel_img1.jpg')">
+             
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('images/carousel_img2.jpg')">
+              
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('images/carousel_img3.jpg')">
+             
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span  aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span  aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="container">
+        <!-- Features Section -->
+        <div class="row content">
+          <div class="col-lg-6 gradient text-small">
+            <img src="images/headphones.jpg" alt="hpy sing" class="img-responsive" />
+           <!-- <span class="lg-quote">&#201C;</span> -->
+    
+            <p><span class="lg-quote">&#34;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+            <ul>
+              <li>Chorus: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae maxime necessitatibus ad labore odit, veniam quasi, earum totam culpa nemo ipsa odio, sed sequi aliquam.</li>
+              <li>Chorus: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse illum non hic rem eaque fugit iusto repudiandae consequuntur repellat voluptate, eum laborum molestias tempora saepe?</li>
+            </ul>
+            <img src="images/singalong.jpg" alt="hpy sing" class="img-responsive" />
+          </div>
+          <div class="col-lg-6" id="map" style="height: 400px;">
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+
+      <!-- Footer -->
+      <footer class="py-5 bg-footer">
+        <div class="container">
+          <p class="m-0 text-white">HPY India.com 2018 | All Rights Reserved &copy;  </p>
+        </div>
+        <!-- /.container -->
+      </footer>
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function myMap() {
+         var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var cst = new google.maps.LatLng(18.9403, 72.835991);
+        var cst_airport = new google.maps.LatLng(19.097403, 72.874245);
+        var mapOptions = {
+            center: new google.maps.LatLng(18.9403, 72.835991),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        directionsDisplay.setMap(map);
+
+        directionsService.route({
+                  origin: cst,
+                  destination: cst_airport,
+                  travelMode: 'DRIVING'
+                }, function(response, status) {
+                  if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                  } else {
+                    window.alert('Directions request failed due to ' + status);
+                  }
+                });
+    } 
+    </script>
+     <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script> 
+
+  </body>
+
+</html>
